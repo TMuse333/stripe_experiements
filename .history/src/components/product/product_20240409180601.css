@@ -1,0 +1,11 @@
+.product-image{
+    height:300px;
+}
+
+.buttons-container{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.buttons-container:f
