@@ -1,6 +1,6 @@
 import express from 'express';
 
-import bodyParser from 'body-parser'
+import body
 
 import Stripe from 'stripe';
 

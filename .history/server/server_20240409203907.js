@@ -1,6 +1,6 @@
 import express from 'express';
 
-import bodyParser from 'body-parser'
+import { json } from 'body-parser';
 
 import Stripe from 'stripe';
 

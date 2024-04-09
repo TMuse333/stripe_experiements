@@ -1,6 +1,6 @@
 import express from 'express';
 
-import bodyParser from 'body-parser'
+import { json } from 'body-parser';
 
 import Stripe from 'stripe';
 
@@ -11,7 +11,7 @@ const stripe = new Stripe('sk_test_51P3fPHD53TrvLemWwuSGOAOuqJGjT7acM30ynx7yTPm9
 const app = express();
 const port = 3001;
 
-app.use(express.json());
+app.use(json());
 
 app.post('/payment', async (req, res) => {
   try {

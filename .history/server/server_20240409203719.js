@@ -1,17 +1,12 @@
 import express from 'express';
-
-import bodyParser from 'body-parser'
-
-import Stripe from 'stripe';
-
-const stripe = new Stripe('sk_test_51P3fPHD53TrvLemWwuSGOAOuqJGjT7acM30ynx7yTPm94tvadkFtlOdTfPJqsFjuK7iLkTM4s1G5RNPhO3M1lsPl00K5e8ia6T');
-
+const stripe = require('stripe')('YOUR_STRIPE_SECRET_KEY');
+import { json } from 'body-parser';
 
 
 const app = express();
 const port = 3001;
 
-app.use(express.json());
+app.use(json());
 
 app.post('/payment', async (req, res) => {
   try {
