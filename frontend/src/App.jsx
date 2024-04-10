@@ -1,53 +1,43 @@
-import React, { useState, useEffect } from "react";
-import "./App.css";
+import React from 'react';
+import { Elements } from '@stripe/react-stripe-js';
+import { loadStripe } from '@stripe/stripe-js';
+import PaymentComponent from './components/paymentComponent';
 
-const ProductDisplay = () => (
-  <section>
-    <div className="product">
-      <img
-        src="https://i.imgur.com/EHyR2nP.png"
-        alt="The cover of Stubborn Attachments"
-      />
-      <div className="description">
-      <h3>Stubborn Attachments</h3>
-      <h5>$20.00</h5>
-      </div>
-    </div>
-    <form action="/create-checkout-session" method="POST">
-      <button type="submit">
-        Checkout
-      </button>
-    </form>
-  </section>
-);
+const stripePromise = loadStripe('pk_test_51P3fPHD53TrvLemW9IwVA5UgfWRyse4txaT8ZyIVemKTkOTDQxU4WpVZcYrbEpY6bKsDsbhFfSNte36LO9kGX6Tj00SOF42meT');
+import ProductsDisplay from './components/products/products';
+import { ShoppingProvider } from './context/shoppingContext';
+import Storefront from './components/storefront/storefront';
+import {Routes, Route} from 'react-router-dom'
+import { q3Details, abu5Details,strikerDetails } from './data/data'
+import SelectedProduct from './components/selectedProduct/selectedProduct'
+const App = () => {
 
-const Message = ({ message }) => (
-  <section>
-    <p>{message}</p>
-  </section>
-);
+    {/* // <Elements stripe={stripePromise}>
+    //   <PaymentComponent amount={50} />
+    // </Elements> */}
+  return (
+    <ShoppingProvider>
 
-export default function App() {
-  const [message, setMessage] = useState("");
+<Routes>
+  <Route path='/' element={<ProductsDisplay/>}></Route>
+  <Route path='/q3-logo' element={<SelectedProduct
+  {...q3Details}/>}></Route>
 
-  useEffect(() => {
-    // Check to see if this is a redirect back from Checkout
-    const query = new URLSearchParams(window.location.search);
+  <Route path='aboubacar-fire' element={<SelectedProduct
+  {...abu5Details}/>}>
 
-    if (query.get("success")) {
-      setMessage("Order placed! You will receive an email confirmation.");
-    }
+    <Route path='quantum-striker' element={<SelectedProduct
+    {...strikerDetails}/>}>
 
-    if (query.get("canceled")) {
-      setMessage(
-        "Order canceled -- continue to shop around and checkout when you're ready."
-      );
-    }
-  }, []);
+    </Route>
 
-  return message ? (
-    <Message message={message} />
-  ) : (
-    <ProductDisplay />
+  </Route>
+</Routes>
+  
+  
+    
+    </ShoppingProvider>
   );
-}
+};
+
+export default App; 

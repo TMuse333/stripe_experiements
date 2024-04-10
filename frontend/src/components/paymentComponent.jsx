@@ -18,14 +18,14 @@ const PaymentComponent = ({ amount }) => {
     try {
       const { token } = await stripe.createToken(cardElement);
 
-      const response = await fetch('/payment', {
+      const response = await fetch('http://localhost:3001/payment', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
           amount: amount * 100, // Amount in cents
-          token,
+        //   token,
         }),
       });
 
