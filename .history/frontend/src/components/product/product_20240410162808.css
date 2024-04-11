@@ -1,0 +1,44 @@
+.product-image{
+    height:300px;
+
+}
+
+.buttons-container{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.buttons-container:first-child{
+    margin-bottom: 2rem;
+}
+
+.product-container{
+    text-align: left;
+   
+}
+
+.product-container h2{
+    margin-top: 0rem;
+}
+
+.strong-price{
+    margin-top: -3rem;
+}
+
+.selected-product-container{
+    width:100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.selected-product-container p{
+    padding:0 1rem;
+}
+
+.price-box{
+    border:3px solid white;
+    padding:1rem;
+}

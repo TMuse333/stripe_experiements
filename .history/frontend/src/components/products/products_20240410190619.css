@@ -1,0 +1,32 @@
+.products-display{
+    margin-top: 5rem;
+    display: flex;
+    justify-content: center;
+    width:100vw;
+    align-items: center;
+    flex-direction: column;
+}
+
+@media screen and (min-width:655px){
+.products-display-container{
+    max-width: 1000px; /* Add max-width for centering */
+    margin: 0 auto; 
+    width:100vw;
+    display: flex;
+    justify-content: center;
+    /* background-color: blue; */
+}
+
+.products-display {
+    display: grid;
+    grid-template-columns: repeat(3);
+    justify-content: space-around;
+    /* align-items: flex-start; */
+    margin-left: auto;
+    margin:0 auto;
+
+
+
+}
+
+}

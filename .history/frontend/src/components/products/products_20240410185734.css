@@ -1,0 +1,19 @@
+.products-display{
+    margin-top: 5rem;
+    display: flex;
+    justify-content: center;
+    width:100vw;
+    align-items: center;
+    flex-direction: column;
+}
+
+@media screen and (min-width:655px){
+    .products-display{
+        display: grid;
+        grid-template-columns: 25vw 25vw 25vw;
+   justify-content: center;
+   align-items: center;
+        max-width: 1000px;
+        margin:0 auto;
+    }
+}

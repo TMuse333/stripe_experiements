@@ -1,0 +1,23 @@
+.product-image{
+    height:300px;
+
+}
+
+.buttons-container{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.buttons-container:first-child{
+    margin-bottom: 2rem;
+}
+
+.product-container{
+    text-align: center;
+}
+
+.selected-product-container{
+    width:100vw;
+    
+}

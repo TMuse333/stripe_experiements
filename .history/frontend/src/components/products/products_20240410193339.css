@@ -1,0 +1,39 @@
+.products-display{
+    margin-top: 5rem;
+    display: flex;
+    justify-content: center;
+    width:100vw;
+    align-items: center;
+    flex-direction: column;
+}
+
+@media screen and (min-width:655px){
+.products-display-container{
+    
+
+    width:100vw;
+
+    /* background-color: blue; */
+}
+
+.products-display {
+
+    width: 80vw;
+margin-left: auto;
+margin-right: auto;
+display: grid;
+grid-template-columns: repeat(auto-fill,minmax(calc(33.333% - 10px),1fr));
+
+   
+
+
+
+
+
+    
+
+
+
+}
+
+}

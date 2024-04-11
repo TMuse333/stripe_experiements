@@ -1,0 +1,28 @@
+.products-display{
+    margin-top: 5rem;
+    display: flex;
+    justify-content: center;
+    width:100vw;
+    align-items: center;
+    flex-direction: column;
+}
+
+@media screen and (min-width:655px){
+.products-display-container{
+    max-width: 1000px; /* Add max-width for centering */
+    margin: 0 auto; 
+    background-color: blue;
+}
+
+.products-display {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(20vw, 240px), 1fr));
+    justify-content: center;
+    align-items: flex-start;
+    margin-left: 1rem;
+
+
+
+}
+
+}

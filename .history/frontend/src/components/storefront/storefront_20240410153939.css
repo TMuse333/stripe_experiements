@@ -1,0 +1,13 @@
+.herobanner{
+    height:80vh;
+    background-image:url(../../media/goku-vs-jiren.jpg) ;
+    background-repeat: none;
+    background-size: cover;
+    position: relative;
+
+}
+
+.herobanner-text{
+p
+}
+
