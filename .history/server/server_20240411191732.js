@@ -12,22 +12,15 @@ app.use(bodyParser.json());
 app.use(cors()); // Use cors middleware
 
 app.get('/secret', async (req, res) => {
-
-  const { amount, token } = req.body;
   const intent = await stripe.paymentIntents.create({
-    amount: 1299,
-    currency: 'usd',
-      payment_method_data: {
-        type: 'card',
-        card: {
-          token: token
-        }
-      },
-      confirm: true,
-      return_url: 'https://www.google.com/search?client=safari&rls=en&q=google.com&ie=UTF-8&oe=UTF-8&safe=active'
-    });
+    amount: 1099,
+    currency: 'cad',
+    automatic_payment_methods: {
+      enabled: true,
+    },
+  });
 
-
+  // console.log('secret Client Secret:', paymentIntent.client_secret);
 
   res.json({client_secret: intent.client_secret});
 });

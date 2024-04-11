@@ -12,10 +12,8 @@ app.use(bodyParser.json());
 app.use(cors()); // Use cors middleware
 
 app.get('/secret', async (req, res) => {
-
-  const { amount, token } = req.body;
   const intent = await stripe.paymentIntents.create({
-    amount: 1299,
+    amount: 1099,
     currency: 'usd',
       payment_method_data: {
         type: 'card',
