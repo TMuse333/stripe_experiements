@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { CardElement, useStripe, useElements, PaymentElement, } from '@stripe/react-stripe-js';
+import { PaymentElement, useStripe, useElements } from '@stripe/react-stripe-js';
 
 const PaymentComponent = ({ amount }) => {
   const stripe = useStripe();
@@ -13,16 +13,10 @@ const PaymentComponent = ({ amount }) => {
       return;
     }
 
-
-
-    const cardElement = elements.getElement(CardElement);
-
-    // console.log('the card element',cardElement)
-
-
+    const paymentElement = elements.getElement(PaymentElement);
 
     try {
-      const result = await stripe.createToken(cardElement);
+      const result = await stripe.createToken(paymentElement);
       if (result.error) {
         setError(result.error.message); // Set error message if token creation fails
         return;
@@ -43,12 +37,12 @@ const PaymentComponent = ({ amount }) => {
 
       const responseData = await response.json();
 
-// Log the response data along with other relevant information
-console.log('Payment Response:', {
-  amount: amount * 100,
-  token: token.id,
-  response: responseData,
-});
+      // Log the response data along with other relevant information
+      console.log('Payment Response:', {
+        amount: amount * 100,
+        token: token.id,
+        response: responseData,
+      });
 
       if (response.ok) {
         console.log('Payment Successful!');
@@ -63,32 +57,12 @@ console.log('Payment Response:', {
   return (
     <form style={{
       width: '50vw',
-    overflow: 'scroll',
+      overflow: 'scroll',
     }}
     onSubmit={handleSubmit}>
-     <CardElement
-    //  classes={{
-    //   base:'card-element'
-    //  }}
-  options={{
-   
-    style: {
-      base: {
-        fontSize: '26px', // Change the font size
-        color: 'black', // Change the text color
-        '::placeholder': {
-          color: '#aab7c4',
-          backgroundColor:'white',
-        },
-        backgroundColor:'white'
-      },
-      invalid: {
-        color: '#9e2146', // Change the color for invalid inputs
-      }
-    },
-  }}
-/>
-
+      <PaymentElement
+        
+      />
 
       <button type="submit" disabled={!stripe}>
         Pay ${amount}

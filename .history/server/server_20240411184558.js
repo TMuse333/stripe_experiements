@@ -20,7 +20,7 @@ app.get('/secret', async (req, res) => {
     },
   });
 
-  console.log('secret Client Secret:', paymentIntent.client_secret);
+  console.log('Le Client Secret:', paymentIntent.client_secret);
 
   res.json({client_secret: intent.client_secret});
 });

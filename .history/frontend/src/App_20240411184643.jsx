@@ -23,10 +23,7 @@ const App = () => {
     const fetchClientSecret = async () => {
       try {
         const response = await fetch('http://localhost:3001/secret');
-     
-     const responseData = await response.json();
-     console.log('slatty',responseData)
-     setClientSecret(responseData.client_secret)
+     console.log('slatty')
       } catch (error) {
         console.error('Error fetching client secret:', error);
       }
@@ -37,9 +34,7 @@ const App = () => {
   
 
 
-useEffect(()=>{
-  console.log('retireved secret',clientSecret)
-},[clientSecret])
+
 
   
 
@@ -50,22 +45,44 @@ useEffect(()=>{
     // Fully customizable with appearance API.
     appearance: {/*...*/},
   };
-  const renderElements = clientSecret !== null;
-
   return (
-    renderElements && (
-      <Elements stripe={stripePromise} options={{ clientSecret }}>
-        <ShoppingProvider>
-          <Routes>
-            <Route path='/' element={<ProductsDisplay />} />
-            <Route path='/q3-logo' element={<SelectedProduct {...q3Details} />} />
-            <Route path='aboubacar-fire' element={<SelectedProduct {...abu5Details} />} />
-            <Route path='quantum-striker' element={<SelectedProduct {...strikerDetails} />} />
-            <Route path='payment' element={<PaymentPage />} />
-          </Routes>
-        </ShoppingProvider>
-      </Elements>
-    )
+    <Elements stripe={stripePromise}
+    // options={options}
+    >
+
+
+    <ShoppingProvider>
+
+     
+
+
+
+<Routes>
+  <Route path='/' element={<ProductsDisplay/>}></Route>
+  <Route path='/q3-logo' element={<SelectedProduct
+  {...q3Details}/>}></Route>
+
+  <Route path='aboubacar-fire' element={<SelectedProduct
+  {...abu5Details}/>}>
+
+
+
+  </Route>
+  <Route path='quantum-striker' element={<SelectedProduct
+    {...strikerDetails}/>}>
+
+    </Route>
+
+    <Route path='payment' element={<PaymentPage/>}
+    >
+
+    </Route>
+</Routes>
+  
+  
+    
+    </ShoppingProvider>
+    </Elements>
   );
 };
 

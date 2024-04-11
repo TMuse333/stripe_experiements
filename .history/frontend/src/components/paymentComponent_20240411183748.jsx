@@ -41,14 +41,7 @@ const PaymentComponent = ({ amount }) => {
         }),
       });
 
-      const responseData = await response.json();
-
-// Log the response data along with other relevant information
-console.log('Payment Response:', {
-  amount: amount * 100,
-  token: token.id,
-  response: responseData,
-});
+      console.log('the responce',response)
 
       if (response.ok) {
         console.log('Payment Successful!');

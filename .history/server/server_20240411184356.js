@@ -19,9 +19,7 @@ app.get('/secret', async (req, res) => {
       enabled: true,
     },
   });
-
-  console.log('secret Client Secret:', paymentIntent.client_secret);
-
+// ... Fetch or create the PaymentIntent
   res.json({client_secret: intent.client_secret});
 });
 
@@ -45,10 +43,8 @@ app.post('/payment', async (req, res) => {
       return_url: 'https://www.google.com/search?client=safari&rls=en&q=google.com&ie=UTF-8&oe=UTF-8&safe=active'
     });
 
-    console.log('Le Client Secret:', paymentIntent.client_secret);
-
     res.json({ client_secret: paymentIntent.client_secret });
- 
+    console.log('payment secrent',token)
   } catch (error) {
     console.error(error.message);
     res.status(500).json({ error: 'Internal Server Error' });

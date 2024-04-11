@@ -12,16 +12,14 @@ app.use(bodyParser.json());
 app.use(cors()); // Use cors middleware
 
 app.get('/secret', async (req, res) => {
-  const intent = await stripe.paymentIntents.create({
+  const paymentIntent = await stripe.paymentIntents.create({
     amount: 1099,
     currency: 'cad',
     automatic_payment_methods: {
       enabled: true,
     },
   });
-
-  console.log('secret Client Secret:', paymentIntent.client_secret);
-
+  const intent = // ... Fetch or create the PaymentIntent
   res.json({client_secret: intent.client_secret});
 });
 
@@ -30,7 +28,7 @@ app.post('/payment', async (req, res) => {
   try {
     const { amount, token } = req.body;
 
-    
+    console.log('the token',token)
 
     const paymentIntent = await stripe.paymentIntents.create({
       amount,
@@ -45,10 +43,7 @@ app.post('/payment', async (req, res) => {
       return_url: 'https://www.google.com/search?client=safari&rls=en&q=google.com&ie=UTF-8&oe=UTF-8&safe=active'
     });
 
-    console.log('Le Client Secret:', paymentIntent.client_secret);
-
     res.json({ client_secret: paymentIntent.client_secret });
- 
   } catch (error) {
     console.error(error.message);
     res.status(500).json({ error: 'Internal Server Error' });

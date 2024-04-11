@@ -19,9 +19,7 @@ app.get('/secret', async (req, res) => {
       enabled: true,
     },
   });
-
-  console.log('secret Client Secret:', paymentIntent.client_secret);
-
+// ... Fetch or create the PaymentIntent
   res.json({client_secret: intent.client_secret});
 });
 

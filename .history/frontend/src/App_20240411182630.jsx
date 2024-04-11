@@ -12,60 +12,73 @@ import { q3Details, abu5Details,strikerDetails } from './data/data'
 import SelectedProduct from './components/selectedProduct/selectedProduct'
 import CheckoutForm from './components/checkoutForm/checkoutForm';
 import PaymentPage from './components/payment/checkoutPage';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
 const stripePromise = loadStripe('pk_test_51P3fPHD53TrvLemW9IwVA5UgfWRyse4txaT8ZyIVemKTkOTDQxU4WpVZcYrbEpY6bKsDsbhFfSNte36LO9kGX6Tj00SOF42meT');
 const App = () => {
 
-  const [clientSecret, setClientSecret] = useState(null); // Define a state variable to store clientSecret
+  const [clientSrcre]
+
 
   useEffect(() => {
     const fetchClientSecret = async () => {
       try {
-        const response = await fetch('http://localhost:3001/secret');
-     
-     const responseData = await response.json();
-     console.log('slatty',responseData)
-     setClientSecret(responseData.client_secret)
+        const response = await fetch('/secret');
+        const { client_secret: clientSecret } = await response.json();
+        setClientSecret(clientSecret); // Assuming you have a state variable to store clientSecret
       } catch (error) {
         console.error('Error fetching client secret:', error);
       }
     };
-
+  
     fetchClientSecret();
   }, []);
   
 
 
-useEffect(()=>{
-  console.log('retireved secret',clientSecret)
-},[clientSecret])
-
-  
-
-
   const options = {
     // passing the client secret obtained in step 3
-    clientSecret: clientSecret,
+    clientSecret: client_secret,
     // Fully customizable with appearance API.
     appearance: {/*...*/},
   };
-  const renderElements = clientSecret !== null;
-
   return (
-    renderElements && (
-      <Elements stripe={stripePromise} options={{ clientSecret }}>
-        <ShoppingProvider>
-          <Routes>
-            <Route path='/' element={<ProductsDisplay />} />
-            <Route path='/q3-logo' element={<SelectedProduct {...q3Details} />} />
-            <Route path='aboubacar-fire' element={<SelectedProduct {...abu5Details} />} />
-            <Route path='quantum-striker' element={<SelectedProduct {...strikerDetails} />} />
-            <Route path='payment' element={<PaymentPage />} />
-          </Routes>
-        </ShoppingProvider>
-      </Elements>
-    )
+    <Elements stripe={stripePromise}
+    options={options}>
+
+
+    <ShoppingProvider>
+
+     
+
+
+
+<Routes>
+  <Route path='/' element={<ProductsDisplay/>}></Route>
+  <Route path='/q3-logo' element={<SelectedProduct
+  {...q3Details}/>}></Route>
+
+  <Route path='aboubacar-fire' element={<SelectedProduct
+  {...abu5Details}/>}>
+
+
+
+  </Route>
+  <Route path='quantum-striker' element={<SelectedProduct
+    {...strikerDetails}/>}>
+
+    </Route>
+
+    <Route path='payment' element={<PaymentPage/>}
+    >
+
+    </Route>
+</Routes>
+  
+  
+    
+    </ShoppingProvider>
+    </Elements>
   );
 };
 

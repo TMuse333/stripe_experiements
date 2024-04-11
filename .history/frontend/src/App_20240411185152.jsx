@@ -53,7 +53,7 @@ useEffect(()=>{
   const renderElements = clientSecret !== null;
 
   return (
-    renderElements && (
+    // renderElements && (
       <Elements stripe={stripePromise} options={{ clientSecret }}>
         <ShoppingProvider>
           <Routes>
@@ -65,7 +65,7 @@ useEffect(()=>{
           </Routes>
         </ShoppingProvider>
       </Elements>
-    )
+    // )
   );
 };
 
