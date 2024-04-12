@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import {useStripe, useElements, PaymentElement} from '@stripe/react-stripe-js';
-import { useEffect } from 'react';
 
 const CheckoutForm = () => {
   const stripe = useStripe();
@@ -40,7 +39,7 @@ const CheckoutForm = () => {
     }
   };
 
-
+  
 
   return (
     <form onSubmit={handleSubmit}>

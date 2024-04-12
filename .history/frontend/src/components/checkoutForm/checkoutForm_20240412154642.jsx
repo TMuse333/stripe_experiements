@@ -40,7 +40,7 @@ const CheckoutForm = () => {
     }
   };
 
-
+  useEffect(())
 
   return (
     <form onSubmit={handleSubmit}>

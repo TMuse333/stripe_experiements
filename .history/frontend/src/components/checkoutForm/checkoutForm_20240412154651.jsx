@@ -40,7 +40,9 @@ const CheckoutForm = () => {
     }
   };
 
-
+  useEffect(()=> {
+    console.log('the pay error is')
+  })
 
   return (
     <form onSubmit={handleSubmit}>

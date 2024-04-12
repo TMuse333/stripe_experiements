@@ -3,7 +3,6 @@ import { Elements,AddressElement } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 import PaymentComponent from '../paymentComponent';
 import CustomCheckoutForm from "../customCheckoutForm/customCheckoutForm";
-import CheckoutForm from "../checkoutForm/checkoutForm";
 
 
 const PaymentPage = () => {
@@ -14,8 +13,8 @@ const PaymentPage = () => {
     return (
         <div className="payment-page-container">
 
-{/* <CustomCheckoutForm  /> */}
-<CheckoutForm/>
+<CustomCheckoutForm  />
+
        {/* <PaymentComponent amount={50} /> */}
 
        {/* <AddressElement

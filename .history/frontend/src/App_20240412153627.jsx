@@ -50,7 +50,7 @@ const [isClientSecretFetched, setIsClientSecretFetched] = useState(false);
     };
     if(!checkoutClicked){
       fetchClientSecret();
-
+      
     }
 
 
@@ -79,26 +79,19 @@ useEffect(()=>{
   };
   const renderElements = clientSecret !== null;
 
- return (
+  return (
     renderElements && (
-      // <Elements stripe={stripePromise} options={options}>
-        <ShoppingProvider>
+      <Elements stripe={stripePromise} options={options}>
+    
           <Routes>
             <Route path='/' element={<ProductsDisplay />} />
             <Route path='/q3-logo' element={<SelectedProduct {...q3Details} />} />
             <Route path='aboubacar-fire' element={<SelectedProduct {...abu5Details} />} />
             <Route path='quantum-striker' element={<SelectedProduct {...strikerDetails} />} />
-            <Route path="/payment" element={
-          <Elements stripe={stripePromise}  
-          options={options}
-          // {{clientSecret:clientSecret}}
-          >
-            <PaymentPage />
-          </Elements>
-            }/>
+            <Route path='payment' element={<PaymentPage />} />
           </Routes>
-        </ShoppingProvider>
-      //  </Elements>
+     
+       </Elements>
     )
   );
 };

@@ -3,7 +3,7 @@ import * as React from 'react';
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
-import { ShoppingProvider } from './context/shoppingContext';
+
 
 import App from './App';
 
@@ -18,6 +18,6 @@ root.render(
     <BrowserRouter>
       <App />
     </BrowserRouter>
-     </ShoppingProvider>
+    // </ShoppingProvider>
   // </StrictMode>
 );

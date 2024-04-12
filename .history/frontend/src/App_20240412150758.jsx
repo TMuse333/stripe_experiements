@@ -22,47 +22,29 @@ const App = () => {
 
 const {checkoutClicked, setCheckoutClicked} = useShoppingContext()
 
-const [isClientSecretFetched, setIsClientSecretFetched] = useState(false);
-
 
   useEffect(() => {
     const fetchClientSecret = async () => {
 
-     
-
-      
+      if(!checkoutClicked )
       try {
-
-       
-
-        
         const response = await fetch('http://localhost:3001/secret');
      
         const {client_secret: clientSecret} = await response.json();
-        // if(!checkoutClicked){
+   
 
      setClientSecret(clientSecret)
-     setIsClientSecretFetched(true)
-    // }
       } catch (error) {
         console.error('Error fetching client secret:', error);
       }
     };
-    if(!checkoutClicked){
-      fetchClientSecret();
 
-    }
-
-
-  
-
-
- 
-  }, [isClientSecretFetched]);
+    fetchClientSecret();
+  }, []);
 
 
   
-const lol = 'memej'
+
 
 useEffect(()=>{
   console.log('retireved secret',clientSecret)
@@ -79,26 +61,19 @@ useEffect(()=>{
   };
   const renderElements = clientSecret !== null;
 
- return (
+  return (
     renderElements && (
-      // <Elements stripe={stripePromise} options={options}>
-        <ShoppingProvider>
+      <Elements stripe={stripePromise} options={options}>
+        {/* <ShoppingProvider> */}
           <Routes>
             <Route path='/' element={<ProductsDisplay />} />
             <Route path='/q3-logo' element={<SelectedProduct {...q3Details} />} />
             <Route path='aboubacar-fire' element={<SelectedProduct {...abu5Details} />} />
             <Route path='quantum-striker' element={<SelectedProduct {...strikerDetails} />} />
-            <Route path="/payment" element={
-          <Elements stripe={stripePromise}  
-          options={options}
-          // {{clientSecret:clientSecret}}
-          >
-            <PaymentPage />
-          </Elements>
-            }/>
+            <Route path='payment' element={<PaymentPage />} />
           </Routes>
-        </ShoppingProvider>
-      //  </Elements>
+        {/* </ShoppingProvider> */}
+       </Elements>
     )
   );
 };

@@ -13,8 +13,8 @@ const handleCheckoutClick = () => {
     <form>
       <PaymentElement />
       <button
-       onClick={handleCheckoutClick}
-      >Submit!</button>
+    //    onClick={handleCheckoutClick}
+      >Submit</button>
     </form>
   );
 };

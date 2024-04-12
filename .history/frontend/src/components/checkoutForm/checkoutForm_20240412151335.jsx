@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import {useStripe, useElements, PaymentElement} from '@stripe/react-stripe-js';
-import { useEffect } from 'react';
 
 const CheckoutForm = () => {
   const stripe = useStripe();
@@ -23,7 +22,7 @@ const CheckoutForm = () => {
       //`Elements` instance that was used to create the Payment Element
       elements,
       confirmParams: {
-        return_url: 'https://dashboard.stripe.com/test/balance',
+        return_url: 'https://example.com/order/123/complete',
       },
     });
 
@@ -39,8 +38,6 @@ const CheckoutForm = () => {
       // site first to authorize the payment, then redirected to the `return_url`.
     }
   };
-
-
 
   return (
     <form onSubmit={handleSubmit}>

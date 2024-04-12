@@ -14,8 +14,8 @@ const PaymentPage = () => {
     return (
         <div className="payment-page-container">
 
-{/* <CustomCheckoutForm  /> */}
-<CheckoutForm/>
+<CustomCheckoutForm  />
+{/* <CheckoutForm/> */}
        {/* <PaymentComponent amount={50} /> */}
 
        {/* <AddressElement

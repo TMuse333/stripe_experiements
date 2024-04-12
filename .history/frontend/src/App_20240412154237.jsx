@@ -102,5 +102,6 @@ useEffect(()=>{
     )
   );
 };
+};
 
 export default App; 

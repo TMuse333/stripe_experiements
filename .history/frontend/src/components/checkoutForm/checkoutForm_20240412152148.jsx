@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import {useStripe, useElements, PaymentElement} from '@stripe/react-stripe-js';
-import { useEffect } from 'react';
 
 const CheckoutForm = () => {
   const stripe = useStripe();
@@ -39,8 +38,6 @@ const CheckoutForm = () => {
       // site first to authorize the payment, then redirected to the `return_url`.
     }
   };
-
-
 
   return (
     <form onSubmit={handleSubmit}>

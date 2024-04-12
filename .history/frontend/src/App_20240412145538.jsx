@@ -5,7 +5,7 @@ import PaymentComponent from './components/paymentComponent';
 
 
 import ProductsDisplay from './components/products/products';
-import { ShoppingProvider, useShoppingContext } from './context/shoppingContext';
+import { ShoppingProvider } from './context/shoppingContext';
 import Storefront from './components/storefront/storefront';
 import {Routes, Route} from 'react-router-dom'
 import { q3Details, abu5Details,strikerDetails } from './data/data'
@@ -19,50 +19,43 @@ const App = () => {
 
   const [clientSecret, setClientSecret] = useState(null);
   
+  // const {checkoutClicked, setCheckoutClicked} = useShoppingContext()
+  
 
-const {checkoutClicked, setCheckoutClicked} = useShoppingContext()
-
-const [isClientSecretFetched, setIsClientSecretFetched] = useState(false);
 
 
   useEffect(() => {
     const fetchClientSecret = async () => {
 
-     
-
       
+
+     
       try {
-
-       
-
-        
         const response = await fetch('http://localhost:3001/secret');
      
         const {client_secret: clientSecret} = await response.json();
-        // if(!checkoutClicked){
+   
 
      setClientSecret(clientSecret)
-     setIsClientSecretFetched(true)
-    // }
       } catch (error) {
         console.error('Error fetching client secret:', error);
       }
-    };
-    if(!checkoutClicked){
-      fetchClientSecret();
+    
+    
 
+    fetchClientSecret();
     }
+  
+
+  // else{
+  //   console.log('submisison already happended!')
+  // }
+
+  }, []);
 
 
   
 
-
- 
-  }, [isClientSecretFetched]);
-
-
-  
-const lol = 'memej'
 
 useEffect(()=>{
   console.log('retireved secret',clientSecret)
@@ -79,7 +72,8 @@ useEffect(()=>{
   };
   const renderElements = clientSecret !== null;
 
- return (
+
+  return (
     renderElements && (
       // <Elements stripe={stripePromise} options={options}>
         <ShoppingProvider>

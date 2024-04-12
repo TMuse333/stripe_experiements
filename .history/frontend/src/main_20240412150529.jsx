@@ -12,12 +12,12 @@ const root = createRoot(rootElement);
 
 root.render(
   // <StrictMode>
-  <ShoppingProvider>
+  // <ShoppingProvider>
 
 
     <BrowserRouter>
       <App />
     </BrowserRouter>
-     </ShoppingProvider>
+    //  </ShoppingProvider>
   // </StrictMode>
 );
