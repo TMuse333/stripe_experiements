@@ -17,15 +17,10 @@ app.get('/secret', async (req, res) => {
     console.log('blaxers')
     const intent = await stripe.paymentIntents.create({
       amount: 1099,
-  
+      currency: 'usd',
       automatic_payment_methods: {
         enabled: true,
       },
-      currency: 'gbp',
-      payment_method: 'pm_card_visa',
-
-      
-    
       confirm: true,
       return_url: 'https://www.google.com/search?client=safari&rls=en&q=google.com&ie=UTF-8&oe=UTF-8&safe=active'
     });

@@ -17,22 +17,20 @@ app.get('/secret', async (req, res) => {
     console.log('blaxers')
     const intent = await stripe.paymentIntents.create({
       amount: 1099,
-  
-      automatic_payment_methods: {
-        enabled: true,
+      currency: 'usd',
+      payment_method_data: {
+        type: 'card',
+        card: {
+          token: token
+        }
       },
-      currency: 'gbp',
-      payment_method: 'pm_card_visa',
-
-      
-    
       confirm: true,
       return_url: 'https://www.google.com/search?client=safari&rls=en&q=google.com&ie=UTF-8&oe=UTF-8&safe=active'
     });
     res.json({ client_secret: intent.client_secret });
   } catch (error) {
     console.error('Error creating payment intent:', error);
-    res.status(500).json({ error: 'Internal Server Error lol' });
+    res.status(500).json({ error: 'Internal Server Error' });
   }
 });
 

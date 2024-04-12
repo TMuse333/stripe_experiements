@@ -17,21 +17,17 @@ import { useEffect, useState } from 'react';
 const stripePromise = loadStripe('pk_test_51P3fPHD53TrvLemW9IwVA5UgfWRyse4txaT8ZyIVemKTkOTDQxU4WpVZcYrbEpY6bKsDsbhFfSNte36LO9kGX6Tj00SOF42meT');
 const App = () => {
 
-  const [clientSecret, setClientSecret] = useState(null);
-  
-  
-
-
+  const [clientSecret, setClientSecret] = useState(null); // Define a state variable to store clientSecret
 
   useEffect(() => {
     const fetchClientSecret = async () => {
       try {
         const response = await fetch('http://localhost:3001/secret');
      
-        const {client_secret: clientSecret} = await response.json();
-   
+     const responseData = await response.json();
+     return responseData.client_secret;
 
-     setClientSecret(clientSecret)
+    //  setClientSecret(responseData.client_secret)
       } catch (error) {
         console.error('Error fetching client secret:', error);
       }
@@ -39,8 +35,6 @@ const App = () => {
 
     fetchClientSecret();
   }, []);
-
-
   
 
 
@@ -61,7 +55,7 @@ useEffect(()=>{
 
   return (
     renderElements && (
-      <Elements stripe={stripePromise} options={options}>
+      <Elements stripe={stripePromise} options={{ clientSecret }}>
         <ShoppingProvider>
           <Routes>
             <Route path='/' element={<ProductsDisplay />} />
@@ -71,7 +65,7 @@ useEffect(()=>{
             <Route path='payment' element={<PaymentPage />} />
           </Routes>
         </ShoppingProvider>
-       </Elements>
+      </Elements>
     )
   );
 };

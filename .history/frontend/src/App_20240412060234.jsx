@@ -19,7 +19,15 @@ const App = () => {
 
   const [clientSecret, setClientSecret] = useState(null);
   
-  
+  // Define a state variable to store clientSecret
+
+
+  // const [name, setName] = useState(()=>{
+
+  //   useEffect(()=>{
+  //     setName('lol')
+  //   })
+  // },[])
 
 
 
@@ -28,10 +36,10 @@ const App = () => {
       try {
         const response = await fetch('http://localhost:3001/secret');
      
-        const {client_secret: clientSecret} = await response.json();
-   
+     const responseData = await response.json();
+    //  return responseData.client_secret;
 
-     setClientSecret(clientSecret)
+     setClientSecret(responseData.client_secret)
       } catch (error) {
         console.error('Error fetching client secret:', error);
       }
@@ -61,17 +69,17 @@ useEffect(()=>{
 
   return (
     renderElements && (
-      <Elements stripe={stripePromise} options={options}>
+      <Elements stripe={stripePromise} options={{ clientSecret }}>
         <ShoppingProvider>
           <Routes>
             <Route path='/' element={<ProductsDisplay />} />
             <Route path='/q3-logo' element={<SelectedProduct {...q3Details} />} />
             <Route path='aboubacar-fire' element={<SelectedProduct {...abu5Details} />} />
             <Route path='quantum-striker' element={<SelectedProduct {...strikerDetails} />} />
-            <Route path='payment' element={<PaymentPage />} />
+            {/* <Route path='payment' element={<PaymentPage />} /> */}
           </Routes>
         </ShoppingProvider>
-       </Elements>
+      // </Elements>
     )
   );
 };

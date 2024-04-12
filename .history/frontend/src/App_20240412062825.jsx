@@ -29,9 +29,9 @@ const App = () => {
         const response = await fetch('http://localhost:3001/secret');
      
         const {client_secret: clientSecret} = await response.json();
-   
+    //  return responseData.client_secret;
 
-     setClientSecret(clientSecret)
+    //  setClientSecret(responseData.client_secret)
       } catch (error) {
         console.error('Error fetching client secret:', error);
       }
@@ -61,7 +61,7 @@ useEffect(()=>{
 
   return (
     renderElements && (
-      <Elements stripe={stripePromise} options={options}>
+      <Elements stripe={stripePromise} clientSecret={clientSecret}>
         <ShoppingProvider>
           <Routes>
             <Route path='/' element={<ProductsDisplay />} />

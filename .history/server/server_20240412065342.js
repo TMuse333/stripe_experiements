@@ -17,15 +17,20 @@ app.get('/secret', async (req, res) => {
     console.log('blaxers')
     const intent = await stripe.paymentIntents.create({
       amount: 1099,
-  
+      currency: 'usd',
       automatic_payment_methods: {
         enabled: true,
       },
-      currency: 'gbp',
-      payment_method: 'pm_card_visa',
-
-      
-    
+      payment_method_data: {
+        type: 'card',
+        card: {
+          // token: token
+          number: '4242424242424242', // Test card number
+          exp_month: 12, // Test card expiration month (e.g., 12 for December)
+          exp_year: 2024, // Test card expiration year (e.g., 2024)
+          cvc: '123'
+        }
+      },
       confirm: true,
       return_url: 'https://www.google.com/search?client=safari&rls=en&q=google.com&ie=UTF-8&oe=UTF-8&safe=active'
     });

@@ -61,7 +61,7 @@ useEffect(()=>{
 
   return (
     renderElements && (
-      <Elements stripe={stripePromise} options={options}>
+      <Elements stripe={stripePromise} clientSecret={clientSecret}>
         <ShoppingProvider>
           <Routes>
             <Route path='/' element={<ProductsDisplay />} />

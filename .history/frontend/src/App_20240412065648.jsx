@@ -31,7 +31,7 @@ const App = () => {
         const {client_secret: clientSecret} = await response.json();
    
 
-     setClientSecret(clientSecret)
+     setClientSecret(responseData.client_secret)
       } catch (error) {
         console.error('Error fetching client secret:', error);
       }
@@ -61,7 +61,7 @@ useEffect(()=>{
 
   return (
     renderElements && (
-      <Elements stripe={stripePromise} options={options}>
+      <Elements stripe={stripePromise} clientSecret={clientSecret}>
         <ShoppingProvider>
           <Routes>
             <Route path='/' element={<ProductsDisplay />} />

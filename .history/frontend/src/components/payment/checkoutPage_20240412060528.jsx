@@ -13,7 +13,7 @@ const PaymentPage = () => {
     return (
         <div className="payment-page-container">
 
-<CustomCheckoutForm  />
+<CustomCheckoutForm amount={50} />
        <PaymentComponent amount={50} />
 
        {/* <AddressElement
