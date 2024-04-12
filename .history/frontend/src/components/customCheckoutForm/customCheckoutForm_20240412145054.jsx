@@ -1,6 +1,6 @@
 import React from 'react';
 import {PaymentElement} from '@stripe/react-stripe-js';
-
+import { useShoppingContext } from '../../context/shoppingContext';
 
 const CheckoutForm = () => {
 

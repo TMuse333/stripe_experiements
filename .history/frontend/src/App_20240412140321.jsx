@@ -19,17 +19,12 @@ const App = () => {
 
   const [clientSecret, setClientSecret] = useState(null);
   
-  // const {checkoutClicked, setCheckoutClicked} = useShoppingContext()
   
 
 
 
   useEffect(() => {
     const fetchClientSecret = async () => {
-
-      
-
-     
       try {
         const response = await fetch('http://localhost:3001/secret');
      
@@ -40,16 +35,9 @@ const App = () => {
       } catch (error) {
         console.error('Error fetching client secret:', error);
       }
-    
-  
+    };
 
     fetchClientSecret();
-  
-
-  // else{
-  //   console.log('submisison already happended!')
-  // }
-}
   }, []);
 
 
@@ -71,7 +59,6 @@ useEffect(()=>{
   };
   const renderElements = clientSecret !== null;
 
-
   return (
     renderElements && (
       // <Elements stripe={stripePromise} options={options}>
@@ -82,16 +69,15 @@ useEffect(()=>{
             <Route path='aboubacar-fire' element={<SelectedProduct {...abu5Details} />} />
             <Route path='quantum-striker' element={<SelectedProduct {...strikerDetails} />} />
             <Route path="/payment" element={
-          <Elements stripe={stripePromise}  
-          options={options}
-          // {{clientSecret:clientSecret}}
-          >
+          <Elements stripe={stripePromise}  options={{
+            clientSecret:clientSecret
+          }}>
             <PaymentPage />
           </Elements>
             }/>
           </Routes>
         </ShoppingProvider>
-      //  </Elements>
+       </Elements>
     )
   );
 };

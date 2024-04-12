@@ -9,12 +9,12 @@ export const ShoppingProvider = ({ children }) => {
 
   const [totalPrice, setTotalPrice] = useState(0)
 
-  const [checkoutClicked, setCheckoutClicked] = useState(false)
+  const [checkoutClicked, setcheckoutClicked] = useState(false)
  
   const shoppingValue = {
     totalPrice, setTotalPrice,
     checkoutClicked,
-    setCheckoutClicked,
+    setcheckoutClicked,
   }
 
   return (

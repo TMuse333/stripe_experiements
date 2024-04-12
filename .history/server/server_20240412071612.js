@@ -16,7 +16,7 @@ app.get('/secret', async (req, res) => {
   try {
     console.log('blaxers')
     const intent = await stripe.paymentIntents.create({
-      amount: 1299,
+      amount: 1099,
   
       automatic_payment_methods: {
         enabled: true,

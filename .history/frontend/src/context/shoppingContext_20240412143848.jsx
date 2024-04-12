@@ -8,13 +8,11 @@ export const ShoppingProvider = ({ children }) => {
   // Define your state variables and functions here
 
   const [totalPrice, setTotalPrice] = useState(0)
-
-  const [checkoutClicked, setCheckoutClicked] = useState(false)
+  const [checkoutClicked, setCheckoutClicked] = useState(true)
  
   const shoppingValue = {
     totalPrice, setTotalPrice,
-    checkoutClicked,
-    setCheckoutClicked,
+    checkoutClicked
   }
 
   return (

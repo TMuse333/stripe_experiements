@@ -1,6 +1,6 @@
 import React from 'react';
 import {PaymentElement} from '@stripe/react-stripe-js';
-
+import { useShoppingContext } from '../../context/shoppingContext';
 
 const CheckoutForm = () => {
 
@@ -13,7 +13,7 @@ const CheckoutForm = () => {
     <form>
       <PaymentElement />
       <button
-    //    onClick={handleCheckoutClick}
+       onClick={handleCheckoutClick}
       >Submit</button>
     </form>
   );

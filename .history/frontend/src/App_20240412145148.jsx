@@ -5,7 +5,7 @@ import PaymentComponent from './components/paymentComponent';
 
 
 import ProductsDisplay from './components/products/products';
-import { ShoppingProvider } from './context/shoppingContext';
+import { ShoppingProvider, useShoppingContext } from './context/shoppingContext';
 import Storefront from './components/storefront/storefront';
 import {Routes, Route} from 'react-router-dom'
 import { q3Details, abu5Details,strikerDetails } from './data/data'

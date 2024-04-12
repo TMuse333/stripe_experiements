@@ -14,7 +14,7 @@ export const ShoppingProvider = ({ children }) => {
   const shoppingValue = {
     totalPrice, setTotalPrice,
     checkoutClicked,
-    setCheckoutClicked,
+    setcheckoutClicked,
   }
 
   return (

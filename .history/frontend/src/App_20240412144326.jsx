@@ -19,17 +19,13 @@ const App = () => {
 
   const [clientSecret, setClientSecret] = useState(null);
   
-  // const {checkoutClicked, setCheckoutClicked} = useShoppingContext()
+  const {checkoutClicked, setC}
   
 
 
 
   useEffect(() => {
     const fetchClientSecret = async () => {
-
-      
-
-     
       try {
         const response = await fetch('http://localhost:3001/secret');
      
@@ -40,16 +36,9 @@ const App = () => {
       } catch (error) {
         console.error('Error fetching client secret:', error);
       }
-    
-  
+    };
 
     fetchClientSecret();
-  
-
-  // else{
-  //   console.log('submisison already happended!')
-  // }
-}
   }, []);
 
 
