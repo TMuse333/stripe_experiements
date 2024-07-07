@@ -4,15 +4,10 @@ import { loadStripe } from '@stripe/stripe-js';
 import { useShoppingContext } from '../../context/shoppingContext';
 import CheckoutForm from '../checkoutForm/checkoutForm';
 
-import dotenv from 'dotenv'
-
-
-
 const PaymentPage = () => {
   const [clientSecret, setClientSecret] = useState(null);
   const { checkoutClicked, setCheckoutClicked } = useShoppingContext();
-  dotenv.config()
-  const stripePromise = loadStripe(process.env.stripe_publish_key);
+  const stripePromise = loadStripe(pk_test_51P3fPHD53TrvLemW9IwVA5UgfWRyse4txaT8ZyIVemKTkOTDQxU4WpVZcYrbEpY6bKsDsbhFfSNte36LO9kGX6Tj00SOF42meT');
 
   const fetchClientSecret = async () => {
     try {

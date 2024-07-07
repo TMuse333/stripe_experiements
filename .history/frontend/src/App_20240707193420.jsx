@@ -14,7 +14,7 @@ import CheckoutForm from './components/checkoutForm/checkoutForm';
 import PaymentPage from './components/payment/checkoutPage';
 import { useEffect, useState } from 'react';
 
-
+const stripePromise = loadStripe('pk_test_51P3fPHD53TrvLemW9IwVA5UgfWRyse4txaT8ZyIVemKTkOTDQxU4WpVZcYrbEpY6bKsDsbhFfSNte36LO9kGX6Tj00SOF42meT');
 const App = () => {
 
 

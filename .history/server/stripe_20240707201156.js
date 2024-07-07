@@ -2,11 +2,9 @@
 import stripePackage from 'stripe';
 import express  from 'express';
 import Stripe from 'stripe'
-import dotenv from 'dotenv'
 
-dotenv.config()
 
-const stripe = new Stripe(process.env.stripe_publish_key);
+const stripe = new Stripe('sk_test_51P3fPHD53TrvLemWwuSGOAOuqJGjT7acM30ynx7yTPm94tvadkFtlOdTfPJqsFjuK7iLkTM4s1G5RNPhO3M1lsPl00K5e8ia6T');
 const app = express();
 app.use(express.static('public'));
 

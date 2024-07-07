@@ -14,13 +14,67 @@ import CheckoutForm from './components/checkoutForm/checkoutForm';
 import PaymentPage from './components/payment/checkoutPage';
 import { useEffect, useState } from 'react';
 
-
+const stripePromise = loadStripe('pk_test_51P3fPHD53TrvLemW9IwVA5UgfWRyse4txaT8ZyIVemKTkOTDQxU4WpVZcYrbEpY6bKsDsbhFfSNte36LO9kGX6Tj00SOF42meT');
 const App = () => {
 
+  const [clientSecret, setClientSecret] = useState(null);
+  
 
+const {checkoutClicked, setCheckoutClicked} = useShoppingContext()
+
+const [isClientSecretFetched, setIsClientSecretFetched] = useState(false);
+
+
+  useEffect(() => {
+    const fetchClientSecret = async () => {
+
+     
+
+      
+      try {
+
+       
+
+        
+        const response = await fetch('http://localhost:3001/secret');
+     
+        const {client_secret: clientSecret} = await response.json();
+        // if(!checkoutClicked){
+
+     setClientSecret(clientSecret)
+     setIsClientSecretFetched(true)
+    // }
+      } catch (error) {
+        console.error('Error fetching client secret:', error);
+      }
+    };
+    if(!checkoutClicked){
+      fetchClientSecret();
+
+    }
+
+
+  
+
+
+ 
+  }, [isClientSecretFetched]);
+
+
+useEffect(()=>{
+  console.log('retireved secret',clientSecret)
+},[clientSecret])
+
+  const options = {
+    // passing the client secret obtained in step 3
+    clientSecret: clientSecret,
+    // Fully customizable with appearance API.
+    appearance: {/*...*/},
+  };
+  const renderElements = clientSecret !== null;
 
  return (
-    
+    renderElements && (
       // <Elements stripe={stripePromise} options={options}>
         <ShoppingProvider>
           <Routes>
@@ -29,14 +83,17 @@ const App = () => {
             <Route path='aboubacar-fire' element={<SelectedProduct {...abu5Details} />} />
             <Route path='quantum-striker' element={<SelectedProduct {...strikerDetails} />} />
             <Route path="/payment" element={
-         
+          <Elements stripe={stripePromise}  
+          options={options}
+          // {{clientSecret:clientSecret}}
+          >
             <PaymentPage />
-
+          </Elements>
             }/>
           </Routes>
         </ShoppingProvider>
       //  </Elements>
-    
+    )
   );
 };
 

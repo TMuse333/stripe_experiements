@@ -6,12 +6,11 @@ import CheckoutForm from '../checkoutForm/checkoutForm';
 
 import dotenv from 'dotenv'
 
-
+dotenv.config()
 
 const PaymentPage = () => {
   const [clientSecret, setClientSecret] = useState(null);
   const { checkoutClicked, setCheckoutClicked } = useShoppingContext();
-  dotenv.config()
   const stripePromise = loadStripe(process.env.stripe_publish_key);
 
   const fetchClientSecret = async () => {
